@@ -20,6 +20,7 @@ func ConfigureRoutes(r *mux.Router) {
 	r.HandleFunc("/users", handlers.GetUsers).Methods("GET")
 	r.HandleFunc("/users/{id}", handlers.GetUserById).Methods("GET")
 	r.HandleFunc("/users/{id}", handlers.DeleteUser).Methods("DELETE")
+	r.HandleFunc("/users/{id}", handlers.UpdateUser).Methods("PATCH")
 
 	// r.Handle("/user/update-user/{UserID}", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 	// 	handlers.UpdateUser(w, r)
