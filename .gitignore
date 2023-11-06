@@ -1,0 +1,42 @@
+.env
+# Archivos binarios generados por Go
+/bin/
+/pkg/
+/test/
+
+# Archivos de configuración específicos del sistema
+.idea/
+.vscode/
+*.swp
+*.swo
+*.DS_Store
+Thumbs.db
+
+# Dependencias gestionadas por go get
+/vendor/
+/Godeps/
+
+# Ejecutables compilados
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# Archivos de registro y archivos temporales
+/log/
+/tmp/
+/*.log
+
+# Archivos de configuración generados automáticamente
+*.yaml
+*.yml
+*.json
+
+# Archivos de documentación generados
+/doc/
+/site/
+/wiki/
+
+# Excluir archivos de respaldo generados por editores de texto
+*~
