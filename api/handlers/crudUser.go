@@ -87,3 +87,33 @@ func DeleteUser(w http.ResponseWriter, r *http.Request) {
 	w.WriteHeader(http.StatusOK)
 	w.Write([]byte("Usuario eliminado con éxito"))
 }
+func UpdateUser(w http.ResponseWriter, r *http.Request) {
+	params := mux.Vars(r)
+	var user models.User
+
+	db, err := utils.OpenDB()
+	if err != nil {
+		http.Error(w, "Error al conectar a la base de datos", http.StatusInternalServerError)
+		return
+	}
+
+	db.First(&user, params["id"])
+	if user.ID == 0 {
+		http.Error(w, "Usuario no encontrado", http.StatusNotFound)
+		return
+	}
+
+	// Decodificar solo los campos que deseas actualizar
+	var updates map[string]interface{}
+	if err := json.NewDecoder(r.Body).Decode(&updates); err != nil {
+		http.Error(w, "Error al decodificar los datos de actualización", http.StatusBadRequest)
+		return
+	}
+
+	// Actualiza los campos específicos
+	db.Model(&user).Updates(updates)
+
+	// Envía una respuesta exitosa
+	w.WriteHeader(http.StatusOK)
+	w.Write([]byte("Usuario actualizado con éxito"))
+}
