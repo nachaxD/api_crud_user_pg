@@ -9,7 +9,7 @@ import (
 	"github.com/gorilla/mux"
 )
 
-func UpdateUser(w http.ResponseWriter, r *http.Request) {
+func UpdateProfile(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
 	var user models.User
 

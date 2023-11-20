@@ -20,14 +20,12 @@ func ConfigureRoutes(r *mux.Router) {
 	r.HandleFunc("/users", handlers.GetUsers).Methods("GET")
 	r.HandleFunc("/users/{id}", handlers.GetUserById).Methods("GET")
 	r.HandleFunc("/users/{id}", handlers.DeleteUser).Methods("DELETE")
-<<<<<<< HEAD
+
 	r.HandleFunc("/users/{id}", handlers.UpdateUser).Methods("PUT")
 	r.HandleFunc("/reserva", handlers.GetReservasPorUsuario).Methods("POST")
 	r.HandleFunc("/reserva/estado", handlers.GetReservasPorEstado).Methods("POST")
 	r.HandleFunc("/reserva/borrar", handlers.BorrarReserva).Methods("POST")
-=======
-	r.HandleFunc("/users/{id}", handlers.UpdateUser).Methods("PATCH")
->>>>>>> 2afa2cfa64ddeb0cb91fde0c047663e3ad1cbb00
+	r.HandleFunc("/users/{id}", handlers.UpdateProfile).Methods("PATCH")
 
 	// r.Handle("/user/update-user/{UserID}", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 	// 	handlers.UpdateUser(w, r)
