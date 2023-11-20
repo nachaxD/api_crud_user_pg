@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"log"
 	"net/http"
 
@@ -16,6 +17,13 @@ func main() {
 	// Configurar rutas desde routes/routes.go
 	routes.ConfigureRoutes(r)
 
-	// Configurar el servidor web para escuchar en el puerto 8080
-	log.Fatal(http.ListenAndServe(":8080", r))
+	// Puerto en el que escuchará el servidor
+	port := ":8080"
+
+	// Iniciar el servidor web y configurar para escuchar en el puerto
+	fmt.Printf("Servidor web iniciado y escuchando en http://localhost%s...\n", port)
+	err := http.ListenAndServe(port, r)
+	if err != nil {
+		log.Fatalf("Error al iniciar el servidor: %v\n", err)
+	}
 }
